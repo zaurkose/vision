@@ -1,0 +1,45 @@
+tasks = []
+
+def add_task(task: str):
+    tasks.append(task)
+    print(f"Задача добавлена: {task}")
+
+def show_tasks():
+    if not tasks:
+        print("Список дел пуст.")
+    else:
+        print("\nВаши дела на сегодня:")
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
+
+def delete_task(index: int):
+    if 0 <= index < len(tasks):
+        removed = tasks.pop(index)
+        print(f"Удалена задача: {removed}")
+    else:
+        print("Неверный номер задачи.")
+
+if __name__ == "__main__":
+    while True:
+        print("\nМеню:")
+        print("1 – Добавить задачу")
+        print("2 – Показать список дел")
+        print("3 – Удалить задачу")
+        print("0 – Выход")
+
+        choice = input("Выберите действие: ")
+
+        if choice == "1":
+            task = input("Введите задачу: ")
+            add_task(task)
+        elif choice == "2":
+            show_tasks()
+        elif choice == "3":
+            show_tasks()
+            num = int(input("Введите номер задачи для удаления: ")) - 1
+            delete_task(num)
+        elif choice == "0":
+            print("До завтра 👋")
+            break
+        else:
+            print("Неверный ввод.")
